@@ -8,11 +8,11 @@
 
 # Usage
 
-### - Store your custom commnands is cc file line by line.
+### - Store your commands in custom commands file.
 
-### - Click the select from list button which look like that => ![](https://i.imgur.com/3v1YYc9.png)
+### - Select your command with => ![](https://i.imgur.com/3v1YYc9.png)
 
-### - Select your command from opened list
+### - Select your command from list.
 
 <br/>
 
@@ -20,7 +20,7 @@
 
 <br/>
 
-### - Click the run first command button to run first line faster which look like that => ![](https://i.imgur.com/AFt5Fpt.png)
+### - Run first command with => ![](https://i.imgur.com/AFt5Fpt.png)
 
 <br/>
 <br/>
@@ -43,28 +43,44 @@
 
 ### • Create cc.md file to store your commands
 
+### • New terminal name contains the line number. So you can find it easily
+
+# ABBREVIATIONS
+
+| **ABBREVIATIONS** | **MEANING**                         |
+| ----------------- | ----------------------------------- |
+| $fn               | Current file Name With Extension    |
+| $fnw              | Current file Name Without Extension |
+| $fon              | Current folder Name                 |
+
 <br/>
 <br/>
 
 # Versions
 
-## Current : <span style="color : red">0.0.1</span>
+## Current : <span style="color : orange">0.0.5</span>
 
-<br/>
-
-## Count Of Versions : <span style="color : green">1</span>
+## Total Version : <span style="color : green">5</span>
 
 <br/>
 <br/>
 
 # Will be in new version
 
-- Add Only parameter to your commands, for example:
-  Your custom command : `npm instal`, and you add just the package name from the input and it will run the `npm install` <span style="color : purple">[package name]</span>
+-   Choose your terminal names yourself.
 
-- Store your custom commands in local pc and get them when you need in another project easily.
+-   Show the terminals just one command.
 
-- The custom commands \*pwa to present examples and how cany you use it for more effective coding.
+-   Name your personal command file
+
+-   Store your commands in settings.json
+
+-   Use Only parameter to your commands, for example:
+    Your custom command : `npm install`, and you add just the package name from the input and it will run the `npm install` <span style="color : green">[package name]</span>
+
+-   Store your custom commands in local pc and get them when you need in another project easily.
+
+-   The custom commands \*pwa to present examples and how cany you use it for more effective coding.
 
 ( pwa : Progressive web app )
 
