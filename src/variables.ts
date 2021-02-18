@@ -10,6 +10,7 @@ let refreshedVariables = () => {
     const fileExtension = activeFileName?.split(".")[1];
     const fileNameWithExtension = activeFileName;
     const fileFolder = activeFileFolder;
+    const filePath = vscode.window.activeTextEditor.document.fileName;
     const wsEdit = new vscode.WorkspaceEdit();
     const wsPath = vscode.workspace.workspaceFolders![0].uri.fsPath;
     const nullText = new Uint8Array([]);
@@ -41,6 +42,7 @@ let refreshedVariables = () => {
         ccName,
         ccExtension,
         customTerminalName,
+        filePath,
     };
 };
 

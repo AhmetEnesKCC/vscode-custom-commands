@@ -9,5 +9,4 @@ const isThereVariable = (line) => {
     }
     return { result };
 };
-console.log();
 //# sourceMappingURL=isThereVariable.js.map

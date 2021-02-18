@@ -1,5 +1,32 @@
 # Change Log
 
+## **0.0.6**
+
+### Changes
+
+-   Added two new **shortcut**
+    -   $fp : file path
+    -   $fps : file path inside quotes
+-   You can add your path destinations to shortcuts:
+
+    ### Before
+
+    ```sh
+    command $fn$fnw // Not works, output => command $fn$fnw
+    ```
+
+    ### After
+
+    ```sh
+    command $fn$fnw // Works, output => command [fileName][fileNameWithout Extension]
+    ```
+
+### Bug Fixes
+
+-   Variables not working inside of quote.
+-   Side by side variables not working issue.
+-   Optimized code quality
+
 ## **0.0.5**
 
 ### Changes

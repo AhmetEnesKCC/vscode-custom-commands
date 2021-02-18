@@ -37,13 +37,15 @@
 
 # Features
 
-### • Run your custom commands with just one click
+### • Run with just one click
 
-### • Select your commands from file in list to run
+### • Select your commands
 
-### • Create cc.md file to store your commands
+### • Create custom_commands.txt file
 
-### • New terminal name contains the line number. So you can find it easily
+### • Found easily with line number based terminal name
+
+</br>
 
 # ABBREVIATIONS
 
@@ -52,15 +54,17 @@
 | $fn               | Current file Name With Extension    |
 | $fnw              | Current file Name Without Extension |
 | $fon              | Current folder Name                 |
+| $fp               | Opened file's path                  |
+| $fps              | Opened files's path inside quotes   |
 
 <br/>
 <br/>
 
 # Versions
 
-## Current : <span style="color : orange">0.0.5</span>
+## Current : <span style="color : orange">0.0.6</span>
 
-## Total Version : <span style="color : green">5</span>
+## Total Version : <span style="color : green">6</span>
 
 <br/>
 <br/>
@@ -80,7 +84,7 @@
 
 -   Store your custom commands in local pc and get them when you need in another project easily.
 
--   The custom commands \*pwa to present examples and how cany you use it for more effective coding.
+-   The custom commands \*pwa to present examples and how can you use it for more effective coding.
 
 ( pwa : Progressive web app )
 

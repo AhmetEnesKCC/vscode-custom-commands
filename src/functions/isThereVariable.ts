@@ -15,5 +15,3 @@ const isThereVariable = (
     }
     return { result };
 };
-
-console.log();

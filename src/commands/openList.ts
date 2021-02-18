@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import functions from "../functions/bundle";
-import { definer, getIntext } from "../functions/shortcutHelpers";
+import { variableTransformer } from "../functions/shortcutHelpers";
 import vars from "../variables";
 
 export default async function OpenList(): Promise<void> {
@@ -83,7 +83,7 @@ export default async function OpenList(): Promise<void> {
             );
             newTerminal.show();
             newTerminal.sendText(clearCommand);
-            newTerminal.sendText(getIntext(definer(item[0].label)));
+            newTerminal.sendText(variableTransformer(item[0].label));
             ListQuickPick.hide();
         };
         let ListQuickPick = functions.openQuickPick(

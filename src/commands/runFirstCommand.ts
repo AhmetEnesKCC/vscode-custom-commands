@@ -1,7 +1,8 @@
 import * as vscode from "vscode";
 import functions from "../functions/bundle";
 import vars from "../variables";
-import { definer, getIntext } from "../functions/shortcutHelpers";
+import { variableTransformer } from "../functions/shortcutHelpers";
+import isInputable from "../functions/isInputable";
 
 export default async function runFirstCommand(): Promise<void> {
     let continueToExecute: boolean = true;
@@ -67,6 +68,16 @@ export default async function runFirstCommand(): Promise<void> {
         );
         newTerminal.show();
         newTerminal.sendText(clearCommand);
-        newTerminal.sendText(getIntext(definer(splittedData[0])));
+        let terminal_text: string = "";
+        let newBox: vscode.InputBox = await functions.createInputBox(
+            "Enter value"
+        );
+        newBox.ignoreFocusOut = true;
+        newBox.show();
+        // Add inputable option
+        // if (functions.isInputable(splittedData[0])) {
+        // }
+        console.log(variableTransformer(splittedData[0]));
+        newTerminal.sendText(variableTransformer(splittedData[0]));
     }
 }
