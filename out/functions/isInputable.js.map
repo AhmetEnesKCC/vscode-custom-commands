@@ -1,0 +1,1 @@
+{"version":3,"file":"isInputable.js","sourceRoot":"","sources":["../../src/functions/isInputable.ts"],"names":[],"mappings":";;AAAA,SAAwB,WAAW,CAAC,IAAY;IAC5C,IAAI,MAAM,GAAY,KAAK,CAAC;IAC5B,IAAI,IAAI,CAAC,IAAI,CAAC,IAAI,CAAC,EAAE;QACjB,MAAM,GAAG,IAAI,CAAC;KACjB;IACD,OAAO,MAAM,CAAC;AAClB,CAAC;AAND,8BAMC"}
