@@ -44,7 +44,7 @@ export default async function OpenList(): Promise<void> {
                 lines.push({ label: line.trim() });
             }
         });
-        let onChoose = (item: vscode.QuickPickItem[]) => {
+        let onChoose = async (item: vscode.QuickPickItem[]) => {
             let lineNumber: string = "";
             let newData: string[] = [];
             splittedData.map((line: string) => {
@@ -77,13 +77,32 @@ export default async function OpenList(): Promise<void> {
             } else {
                 clearCommand = "clear";
             }
-            let newTerminal = vars().createTerminal(
-                vars().customTerminalName + " - " + lineNumber,
-                vars().terminalPath
-            );
-            newTerminal.show();
-            newTerminal.sendText(clearCommand);
-            newTerminal.sendText(variableTransformer(item[0].label));
+            let line_text: string = item[0].label;
+            if (functions.isInputable(line_text)) {
+                await functions
+                    .changeInputVariable(line_text)
+                    .then((res: string) => {
+                        vscode.commands.executeCommand(
+                            "workbench.action.focusPanel"
+                        );
+                        let newTerminal: vscode.Terminal = vars().createTerminal(
+                            vars().customTerminalName + " - 1",
+                            vars().terminalPath
+                        );
+                        newTerminal.show();
+                        newTerminal.sendText(clearCommand);
+                        newTerminal.sendText(variableTransformer(res));
+                    });
+            } else {
+                vscode.commands.executeCommand("workbench.action.focusPanel");
+                let newTerminal: vscode.Terminal = vars().createTerminal(
+                    vars().customTerminalName + " - 1",
+                    vars().terminalPath
+                );
+                newTerminal.show();
+                newTerminal.sendText(clearCommand);
+                newTerminal.sendText(variableTransformer(line_text));
+            }
             ListQuickPick.hide();
         };
         let ListQuickPick = functions.openQuickPick(

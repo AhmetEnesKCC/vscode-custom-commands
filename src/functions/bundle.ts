@@ -3,6 +3,7 @@ import readFile from "./readFile";
 import openQuickPick from "./openQuickPick";
 import createInputBox from "./createInputBox";
 import isInputable from "./isInputable";
+import changeInputVariable from "./changeInputvariable";
 
 export default {
     createFile,
@@ -10,4 +11,5 @@ export default {
     openQuickPick,
     createInputBox,
     isInputable,
+    changeInputVariable,
 };

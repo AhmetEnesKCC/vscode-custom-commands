@@ -30,7 +30,6 @@ export default async function runFirstCommand(): Promise<void> {
     };
     await functions.readFile(vars().ccName + vars().ccExtension, "", ifError);
     if (continueToExecute) {
-        vscode.commands.executeCommand("workbench.action.focusPanel");
         let fileData: string = "";
         let splittedData: string[] = [];
         async function getSyncData() {
@@ -41,8 +40,6 @@ export default async function runFirstCommand(): Promise<void> {
             splittedData = fileData.split("\n");
         }
         await getSyncData();
-
-        let teminalIdByCommand = splittedData[0].toUpperCase();
 
         vars().terminals.map((term: vscode.Terminal) => {
             if (term.name === vars().customTerminalName + " - 1") {
@@ -62,22 +59,32 @@ export default async function runFirstCommand(): Promise<void> {
             clearCommand = "clear";
         }
 
-        let newTerminal: vscode.Terminal = vars().createTerminal(
-            vars().customTerminalName + " - 1",
-            vars().terminalPath
-        );
-        newTerminal.show();
-        newTerminal.sendText(clearCommand);
-        let terminal_text: string = "";
-        let newBox: vscode.InputBox = await functions.createInputBox(
-            "Enter value"
-        );
-        newBox.ignoreFocusOut = true;
-        newBox.show();
+        let line_text: string = splittedData[0];
         // Add inputable option
-        // if (functions.isInputable(splittedData[0])) {
-        // }
-        console.log(variableTransformer(splittedData[0]));
-        newTerminal.sendText(variableTransformer(splittedData[0]));
+        if (functions.isInputable(line_text)) {
+            await functions
+                .changeInputVariable(line_text)
+                .then((res: string) => {
+                    vscode.commands.executeCommand(
+                        "workbench.action.focusPanel"
+                    );
+                    let newTerminal: vscode.Terminal = vars().createTerminal(
+                        vars().customTerminalName + " - 1",
+                        vars().terminalPath
+                    );
+                    newTerminal.show();
+                    newTerminal.sendText(clearCommand);
+                    newTerminal.sendText(variableTransformer(res));
+                });
+        } else {
+            vscode.commands.executeCommand("workbench.action.focusPanel");
+            let newTerminal: vscode.Terminal = vars().createTerminal(
+                vars().customTerminalName + " - 1",
+                vars().terminalPath
+            );
+            newTerminal.show();
+            newTerminal.sendText(clearCommand);
+            newTerminal.sendText(variableTransformer(line_text));
+        }
     }
 }

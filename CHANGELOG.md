@@ -1,5 +1,14 @@
 # Change Log
 
+## **0.0.7**
+
+### Changes
+
+-   Added Inputs
+    -   To use it write: `->` (side by side line and greater sign)
+    -   You can more than one
+-   Optimized code quality
+
 ## **0.0.6**
 
 ### Changes

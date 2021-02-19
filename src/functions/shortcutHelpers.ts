@@ -66,7 +66,7 @@ type typeOfS = "fnw" | "fn" | "fon" | "fp";
 
 // NEW WAY
 
-export const variableTransformer = (line: string) => {
+export const variableTransformer = (line: string, inputData?: string) => {
     let new_line: string = line;
     new_line = new_line
         .replace(/\$fnw/gi, variables().fileNameWithoutExtension)
@@ -74,5 +74,8 @@ export const variableTransformer = (line: string) => {
         .replace(/\$fon/gi, variables().fileFolder)
         .replace(/\$fps/gi, `"${variables().filePath}"`)
         .replace(/\$fp/, variables().filePath);
+    if (inputData) {
+        new_line = new_line.replace(/->/, inputData);
+    }
     return new_line;
 };

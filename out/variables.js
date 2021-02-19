@@ -24,6 +24,7 @@ let refreshedVariables = () => {
     const ccName = "custom_commands";
     const ccExtension = ".txt";
     const customTerminalName = "line";
+    const inputSign = "->";
     return {
         fileNameWithExtension,
         fileNameWithoutExtension,
@@ -41,6 +42,7 @@ let refreshedVariables = () => {
         ccExtension,
         customTerminalName,
         filePath,
+        inputSign,
     };
 };
 exports.default = refreshedVariables;

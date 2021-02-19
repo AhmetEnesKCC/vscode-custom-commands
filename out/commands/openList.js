@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const vscode = require("vscode");
 const bundle_1 = require("../functions/bundle");
 const shortcutHelpers_1 = require("../functions/shortcutHelpers");
 const variables_1 = require("../variables");
@@ -34,7 +35,7 @@ async function OpenList() {
                 lines.push({ label: line.trim() });
             }
         });
-        let onChoose = (item) => {
+        let onChoose = async (item) => {
             let lineNumber = "";
             let newData = [];
             splittedData.map((line) => {
@@ -64,10 +65,25 @@ async function OpenList() {
             else {
                 clearCommand = "clear";
             }
-            let newTerminal = variables_1.default().createTerminal(variables_1.default().customTerminalName + " - " + lineNumber, variables_1.default().terminalPath);
-            newTerminal.show();
-            newTerminal.sendText(clearCommand);
-            newTerminal.sendText(shortcutHelpers_1.variableTransformer(item[0].label));
+            let line_text = item[0].label;
+            if (bundle_1.default.isInputable(line_text)) {
+                await bundle_1.default
+                    .changeInputVariable(line_text)
+                    .then((res) => {
+                    vscode.commands.executeCommand("workbench.action.focusPanel");
+                    let newTerminal = variables_1.default().createTerminal(variables_1.default().customTerminalName + " - 1", variables_1.default().terminalPath);
+                    newTerminal.show();
+                    newTerminal.sendText(clearCommand);
+                    newTerminal.sendText(shortcutHelpers_1.variableTransformer(res));
+                });
+            }
+            else {
+                vscode.commands.executeCommand("workbench.action.focusPanel");
+                let newTerminal = variables_1.default().createTerminal(variables_1.default().customTerminalName + " - 1", variables_1.default().terminalPath);
+                newTerminal.show();
+                newTerminal.sendText(clearCommand);
+                newTerminal.sendText(shortcutHelpers_1.variableTransformer(line_text));
+            }
             ListQuickPick.hide();
         };
         let ListQuickPick = bundle_1.default.openQuickPick("Select Command From List", lines, onChoose);

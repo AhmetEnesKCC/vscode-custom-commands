@@ -2,7 +2,7 @@
     "name": "commands",
     "displayName": "custom commands",
     "description": "create custom commands for execute faster",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "engines": {
         "vscode": "^1.50.0"
     },
@@ -14,6 +14,9 @@
         "*"
     ],
     "icon": "icon.png",
+    "repository": {
+        "url": "https://github.com/AhmetEnesKCC/vscode-custom-commands"
+    },
     "main": "./out/extension.js",
     "contributes": {
         "configuration": {

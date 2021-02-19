@@ -22,7 +22,6 @@ async function runFirstCommand() {
     };
     await bundle_1.default.readFile(variables_1.default().ccName + variables_1.default().ccExtension, "", ifError);
     if (continueToExecute) {
-        vscode.commands.executeCommand("workbench.action.focusPanel");
         let fileData = "";
         let splittedData = [];
         async function getSyncData() {
@@ -30,7 +29,6 @@ async function runFirstCommand() {
             splittedData = fileData.split("\n");
         }
         await getSyncData();
-        let teminalIdByCommand = splittedData[0].toUpperCase();
         variables_1.default().terminals.map((term) => {
             if (term.name === variables_1.default().customTerminalName + " - 1") {
                 term.dispose();
@@ -48,18 +46,26 @@ async function runFirstCommand() {
         else {
             clearCommand = "clear";
         }
-        let newTerminal = variables_1.default().createTerminal(variables_1.default().customTerminalName + " - 1", variables_1.default().terminalPath);
-        newTerminal.show();
-        newTerminal.sendText(clearCommand);
-        let terminal_text = "";
-        let newBox = await bundle_1.default.createInputBox("Enter value");
-        newBox.ignoreFocusOut = true;
-        newBox.show();
+        let line_text = splittedData[0];
         // Add inputable option
-        // if (functions.isInputable(splittedData[0])) {
-        // }
-        console.log(shortcutHelpers_1.variableTransformer(splittedData[0]));
-        newTerminal.sendText(shortcutHelpers_1.variableTransformer(splittedData[0]));
+        if (bundle_1.default.isInputable(line_text)) {
+            await bundle_1.default
+                .changeInputVariable(line_text)
+                .then((res) => {
+                vscode.commands.executeCommand("workbench.action.focusPanel");
+                let newTerminal = variables_1.default().createTerminal(variables_1.default().customTerminalName + " - 1", variables_1.default().terminalPath);
+                newTerminal.show();
+                newTerminal.sendText(clearCommand);
+                newTerminal.sendText(shortcutHelpers_1.variableTransformer(res));
+            });
+        }
+        else {
+            vscode.commands.executeCommand("workbench.action.focusPanel");
+            let newTerminal = variables_1.default().createTerminal(variables_1.default().customTerminalName + " - 1", variables_1.default().terminalPath);
+            newTerminal.show();
+            newTerminal.sendText(clearCommand);
+            newTerminal.sendText(shortcutHelpers_1.variableTransformer(line_text));
+        }
     }
 }
 exports.default = runFirstCommand;

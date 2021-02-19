@@ -15,6 +15,7 @@
 ### - Select your command from list.
 
 <br/>
+<br/>
 
 ## _OR_
 
@@ -25,6 +26,26 @@
 <br/>
 <br/>
 
+# Tutorials
+
+-   ## Inputable
+
+![input gif](images/input.gif)
+
+#### Theme : Deepdark Material Theme | Default Version
+
+<br/>
+
+-   ## Shortcuts
+
+![shortcuts gif - 1](images/shortcuts.gif)
+
+#### Theme : Deepdark Material Theme | Default Version
+
+![shortcuts gif - 2](images/shortcuts_2.gif)
+
+<br/>
+
 # Commands
 
 | **COMMANDS** | **FUNCTION**                                                  |
@@ -33,8 +54,8 @@
 | show cc      | Show cc file to prevent the scenarious which hard to found it |
 
 <br/>
-<br/>
-
+<br/> 
+     
 # Features
 
 ### • Run with just one click
@@ -45,31 +66,36 @@
 
 ### • Found easily with line number based terminal name
 
+### • Add your inputs
+
 </br>
 
 # ABBREVIATIONS
 
-| **ABBREVIATIONS** | **MEANING**                         |
-| ----------------- | ----------------------------------- |
-| $fn               | Current file Name With Extension    |
-| $fnw              | Current file Name Without Extension |
-| $fon              | Current folder Name                 |
-| $fp               | Opened file's path                  |
-| $fps              | Opened files's path inside quotes   |
+| **ABBREVIATIONS** | **MEANING**                               |
+| ----------------- | ----------------------------------------- |
+| $fn               | Current file Name With Extension          |
+| $fnw              | Current file Name Without Extension       |
+| $fon              | Current folder Name                       |
+| $fp               | Opened file's path                        |
+| $fps              | Opened files's path inside quotes         |
+| ->                | Enter your Value (Will open an input box) |
 
 <br/>
 <br/>
 
 # Versions
 
-## Current : <span style="color : orange">0.0.6</span>
+## Current : <span style="color : orange">0.0.7</span>
 
-## Total Version : <span style="color : green">6</span>
+## Total Version : <span style="color : green">7</span>
 
 <br/>
 <br/>
 
 # Will be in new version
+
+-   custom_commands file language support
 
 -   Choose your terminal names yourself.
 
@@ -79,7 +105,7 @@
 
 -   Store your commands in settings.json
 
--   Use Only parameter to your commands, for example:
+-   [**ARRIVED**] Use Only parameter to your commands, for example:
     Your custom command : `npm install`, and you add just the package name from the input and it will run the `npm install` <span style="color : green">[package name]</span>
 
 -   Store your custom commands in local pc and get them when you need in another project easily.
