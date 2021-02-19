@@ -16,6 +16,10 @@ export default async (line: string) => {
         newBox.ignoreFocusOut = true;
         newBox.show();
         await new Promise((resolve) => {
+            newBox.onDidHide((e) => {
+                line = line.replace(inputSign_regex, "");
+                resolve(false);
+            });
             newBox.onDidAccept((e) => {
                 line = line.replace(inputSign_regex, newBox.value);
                 newBox.dispose();

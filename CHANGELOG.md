@@ -1,12 +1,28 @@
 # Change Log
 
+## **0.0.8**
+
+## Changes
+
+-   Optional inputs
+    -   if you use `-|>` (side by side ( - ), ( | ), ( > ) ) instead of `->` the command will execute if you pass the input box.
+    -   Otherwise it will cancel all process.
+-   If you cancel input box it will jump to the next if exist
+
+## Bug Fixes
+
+-   Optimized code quality
+
 ## **0.0.7**
 
 ### Changes
 
 -   Added Inputs
-    -   To use it write: `->` (side by side line and greater sign)
-    -   You can more than one
+    -   To use it write: `->` (side by side line ( - ) and greater sign ( > ))
+    -   You can use more than one
+
+### Bug Fixes
+
 -   Optimized code quality
 
 ## **0.0.6**

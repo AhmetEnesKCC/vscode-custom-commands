@@ -27,6 +27,7 @@ let refreshedVariables = () => {
     const ccExtension = ".txt";
     const customTerminalName = "line";
     const inputSign = "->";
+    const optionalInputSign = "-|>";
     return {
         fileNameWithExtension,
         fileNameWithoutExtension,

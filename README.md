@@ -2,7 +2,7 @@
 
 ![icon](https://i.imgur.com/M6w2Wnm.png)
 
-# VS code Custom Commands
+# Executify +
 
 </div>
 
@@ -25,7 +25,7 @@
 
 <br/>
 <br/>
-
+ 
 # Tutorials
 
 ##### Theme : Deepdark Material Theme | Default Version
@@ -34,18 +34,18 @@
 
 -   ## Inputable
 
-![input gif](images/input.gif)
+![input gif](https://raw.githubusercontent.com/AhmetEnesKCC/vscode-executify/0.0.7/images/input.gif)
 
 <br/>
 
 -   ## Shortcuts
 
-![shortcuts gif - 1](images/shortcuts.gif)
+![shortcuts gif - 1](https://raw.githubusercontent.com/AhmetEnesKCC/vscode-executify/0.0.7/images/shortcuts.gif)
 
-![shortcuts gif - 2](images/shortcuts_2.gif)
+![shortcuts gif - 2](https://raw.githubusercontent.com/AhmetEnesKCC/vscode-executify/0.0.7/images/shortcuts_2.gif)
 
 <br/>
-
+ 
 # Commands
 
 | **COMMANDS** | **FUNCTION**                                                  |
@@ -80,6 +80,7 @@
 | $fp               | Opened file's path                        |
 | $fps              | Opened files's path inside quotes         |
 | ->                | Enter your Value (Will open an input box) |
+| -\|>              | Enter optional value                      |
 
 <br/>
 <br/>
@@ -101,7 +102,7 @@
 
 -   Show the terminals just one command.
 
--   Name your personal command file
+-   [**ARRIVED**] Name your personal command file
 
 -   Store your commands in settings.json
 
