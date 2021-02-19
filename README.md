@@ -28,19 +28,19 @@
 
 # Tutorials
 
+##### Theme : Deepdark Material Theme | Default Version
+
+<br/>
+
 -   ## Inputable
 
 ![input gif](images/input.gif)
-
-#### Theme : Deepdark Material Theme | Default Version
 
 <br/>
 
 -   ## Shortcuts
 
 ![shortcuts gif - 1](images/shortcuts.gif)
-
-#### Theme : Deepdark Material Theme | Default Version
 
 ![shortcuts gif - 2](images/shortcuts_2.gif)
 
