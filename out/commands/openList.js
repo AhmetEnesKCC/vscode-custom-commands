@@ -66,16 +66,56 @@ async function OpenList() {
                 clearCommand = "clear";
             }
             let line_text = item[0].label;
-            if (bundle_1.default.isInputable(line_text)) {
-                await bundle_1.default
-                    .changeInputVariable(line_text)
-                    .then((res) => {
-                    vscode.commands.executeCommand("workbench.action.focusPanel");
-                    let newTerminal = variables_1.default().createTerminal(variables_1.default().customTerminalName + " - 1", variables_1.default().terminalPath);
-                    newTerminal.show();
-                    newTerminal.sendText(clearCommand);
-                    newTerminal.sendText(shortcutHelpers_1.variableTransformer(res));
-                });
+            if (bundle_1.default.isInputable(line_text).result == true) {
+                let types_input = await bundle_1.default.isInputable(line_text).types;
+                if (types_input.non_optional === true &&
+                    types_input.optional === true) {
+                    await bundle_1.default
+                        .non_optional_changer(line_text)
+                        .then(async (res) => {
+                        if (res.cancelled == true) {
+                            return;
+                        }
+                        await bundle_1.default
+                            .optional_changer(res.line)
+                            .then((new_res) => {
+                            vscode.commands.executeCommand("workbench.action.focusPanel");
+                            let newTerminal = variables_1.default().createTerminal(variables_1.default().customTerminalName + " - 1", variables_1.default().terminalPath);
+                            newTerminal.show();
+                            newTerminal.sendText(clearCommand);
+                            newTerminal.sendText(shortcutHelpers_1.variableTransformer(new_res.line));
+                        });
+                    });
+                }
+                else if (types_input.non_optional === true &&
+                    types_input.optional === false) {
+                    await bundle_1.default
+                        .optional_changer(line_text)
+                        .then((res) => {
+                        if (res.cancelled === true) {
+                            return;
+                        }
+                        else if (res.cancelled === false) {
+                            vscode.commands.executeCommand("workbench.action.focusPanel");
+                            let newTerminal = variables_1.default().createTerminal(variables_1.default().customTerminalName + " - 1", variables_1.default().terminalPath);
+                            newTerminal.show();
+                            newTerminal.sendText(clearCommand);
+                            newTerminal.sendText(shortcutHelpers_1.variableTransformer(res.line));
+                        }
+                    });
+                }
+                else if (types_input.non_optional === false &&
+                    types_input.optional === true) {
+                    await bundle_1.default
+                        .optional_changer(line_text)
+                        .then((res) => {
+                        vscode.commands.executeCommand("workbench.action.focusPanel");
+                        let newTerminal = variables_1.default().createTerminal(variables_1.default().customTerminalName + " - 1", variables_1.default().terminalPath);
+                        newTerminal.show();
+                        newTerminal.sendText(clearCommand);
+                        newTerminal.sendText(shortcutHelpers_1.variableTransformer(res.line));
+                    });
+                }
             }
             else {
                 vscode.commands.executeCommand("workbench.action.focusPanel");

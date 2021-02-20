@@ -1,8 +1,8 @@
 {
     "name": "commands",
     "displayName": "Executify +",
-    "description": "create custom commands for execute faster",
-    "version": "0.0.8",
+    "description": "Execute commands at rocket speed",
+    "version": "0.0.9",
     "engines": {
         "vscode": "^1.50.0"
     },
@@ -35,8 +35,8 @@
                 "title": "Run First Command",
                 "category": "run",
                 "icon": {
-                    "light": "/icons/dark/run_first.svg",
-                    "dark": "/icons/dark/run_first.svg"
+                    "light": "/icons/light/run.svg",
+                    "dark": "/icons/dark/run.svg"
                 }
             },
             {
@@ -44,8 +44,8 @@
                 "title": "Select From List",
                 "category": "select",
                 "icon": {
-                    "dark": "/icons/dark/select_from_list.svg",
-                    "light": "/icons/dark/select_from_list.svg"
+                    "light": "/icons/light/list.svg",
+                    "dark": "/icons/dark/list.svg"
                 }
             },
             {

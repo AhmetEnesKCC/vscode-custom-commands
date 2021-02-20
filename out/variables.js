@@ -25,7 +25,12 @@ let refreshedVariables = () => {
     const ccExtension = ".txt";
     const customTerminalName = "line";
     const inputSign = "->";
-    const optionalInputSign = "-|>";
+    const optionalInputSign = "-o>";
+    let inputSign_regex_glob = new RegExp(inputSign, "gi");
+    let inputSign_regex = new RegExp(inputSign, "i");
+    let optionalInputSign_regex_glob = new RegExp(optionalInputSign, "gi");
+    let optionalInputSign_regex = new RegExp(optionalInputSign, "i");
+    let cancelled_input = "Process cancelled";
     return {
         fileNameWithExtension,
         fileNameWithoutExtension,
@@ -44,6 +49,12 @@ let refreshedVariables = () => {
         customTerminalName,
         filePath,
         inputSign,
+        optionalInputSign,
+        inputSign_regex_glob,
+        inputSign_regex,
+        optionalInputSign_regex_glob,
+        optionalInputSign_regex,
+        cancelled_input,
     };
 };
 exports.default = refreshedVariables;

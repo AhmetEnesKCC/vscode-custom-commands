@@ -1,17 +1,26 @@
 # Change Log
 
+## **0.0.9**
+
+### Bug Fixes
+
+-   Fixed icons not loading issue
+
 ## **0.0.8**
 
-## Changes
+### Changes
 
 -   Optional inputs
-    -   if you use `-|>` (side by side ( - ), ( | ), ( > ) ) instead of `->` the command will execute if you pass the input box.
+    -   if you use `-o>` (side by side ( - ), ( o ) it is the letter "o", ( > ) ) instead of `->` the command will execute even you pass the input box. ( It will start ask from non optional inputs then optional ones.)
     -   Otherwise it will cancel all process.
 -   If you cancel input box it will jump to the next if exist
+-   Changed icons
+-   Icons will change related to theme type
 
-## Bug Fixes
+### Bug Fixes
 
 -   Optimized code quality
+-   Fixed input window opening even there is no input in command bug.
 
 ## **0.0.7**
 
