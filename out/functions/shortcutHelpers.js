@@ -59,7 +59,7 @@ const variables_1 = require("../variables");
 // };
 // const rewriter = () => {};
 // NEW WAY
-const variableTransformer = (line) => {
+const variableTransformer = (line, inputData) => {
     let new_line = line;
     new_line = new_line
         .replace(/\$fnw/gi, variables_1.default().fileNameWithoutExtension)
@@ -67,6 +67,9 @@ const variableTransformer = (line) => {
         .replace(/\$fon/gi, variables_1.default().fileFolder)
         .replace(/\$fps/gi, `"${variables_1.default().filePath}"`)
         .replace(/\$fp/, variables_1.default().filePath);
+    if (inputData) {
+        new_line = new_line.replace(/->/, inputData);
+    }
     return new_line;
 };
 exports.variableTransformer = variableTransformer;

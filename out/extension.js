@@ -14,7 +14,8 @@ function activate(context) {
     var custom_command_button = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 999);
     // properties
     custom_command_button.text = "$(run-all)";
-    custom_command_button.tooltip = "Click to run custom command";
+    custom_command_button.tooltip = "Click to run first-command";
+    custom_command_button.command = "custom_commands.run";
     custom_command_button.show();
     // Create cc.md File
     // COMMAND
