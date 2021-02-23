@@ -5,17 +5,17 @@ import run_first_command from "./commands/runFirstCommand";
 import open_list_command from "./commands/openList";
 import functions from "./functions/bundle";
 import showCC from "./commands/showCC";
+import createCC from "./commands/createCC";
 export function activate(context: vscode.ExtensionContext) {
     // Get the custom commands from user;
     // Create button to run custom command
 
     // STATUSBAR ITEM
-
     // create
 
     var custom_command_button = vscode.window.createStatusBarItem(
         vscode.StatusBarAlignment.Right,
-        999
+        999,
     );
 
     // properties
@@ -55,21 +55,18 @@ export function activate(context: vscode.ExtensionContext) {
     // SUBSCRIBE TO COMMANDS
 
     context.subscriptions.push(
-        vscode.commands.registerCommand(runCommand, Run_First_Command)
+        vscode.commands.registerCommand(runCommand, Run_First_Command),
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand(selectCommand, Select_From_List_Func)
+        vscode.commands.registerCommand(selectCommand, Select_From_List_Func),
     );
     context.subscriptions.push(
-        vscode.commands.registerCommand(
-            fileCreateCommand,
-            functions.createFile.bind(null, "cc", "")
-        )
+        vscode.commands.registerCommand(fileCreateCommand, createCC),
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand(showCommand, showCC)
+        vscode.commands.registerCommand(showCommand, showCC),
     );
 }
 

@@ -4,8 +4,8 @@ exports.deactivate = exports.activate = void 0;
 const vscode = require("vscode");
 const runFirstCommand_1 = require("./commands/runFirstCommand");
 const openList_1 = require("./commands/openList");
-const bundle_1 = require("./functions/bundle");
 const showCC_1 = require("./commands/showCC");
+const createCC_1 = require("./commands/createCC");
 function activate(context) {
     // Get the custom commands from user;
     // Create button to run custom command
@@ -37,7 +37,7 @@ function activate(context) {
     // SUBSCRIBE TO COMMANDS
     context.subscriptions.push(vscode.commands.registerCommand(runCommand, Run_First_Command));
     context.subscriptions.push(vscode.commands.registerCommand(selectCommand, Select_From_List_Func));
-    context.subscriptions.push(vscode.commands.registerCommand(fileCreateCommand, bundle_1.default.createFile.bind(null, "cc", "")));
+    context.subscriptions.push(vscode.commands.registerCommand(fileCreateCommand, createCC_1.default));
     context.subscriptions.push(vscode.commands.registerCommand(showCommand, showCC_1.default));
 }
 exports.activate = activate;

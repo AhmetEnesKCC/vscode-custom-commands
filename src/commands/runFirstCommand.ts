@@ -63,6 +63,7 @@ export default async function runFirstCommand(): Promise<void> {
         // Add inputable option
         if (functions.isInputable(line_text).result == true) {
             let types_input = await functions.isInputable(line_text).types;
+            console.log(types_input);
             if (
                 types_input.non_optional === true &&
                 types_input.optional === true
@@ -96,7 +97,7 @@ export default async function runFirstCommand(): Promise<void> {
                 types_input.optional === false
             ) {
                 await functions
-                    .optional_changer(line_text)
+                    .non_optional_changer(line_text)
                     .then((res: { cancelled: boolean; line: string }) => {
                         if (res.cancelled === true) {
                             return;

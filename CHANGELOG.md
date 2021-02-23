@@ -1,5 +1,19 @@
 # Change Log
 
+## 0.0.92
+
+### Changes
+
+-   You can use :
+    `create cc` and `show cc` even when the workspace is empty
+-   Added information messages to commands
+
+### Bug Fixes
+
+-   Fixed **only-optional** inputs not working
+-   Optimized code quality
+-   Fixed minor bugs
+
 ## **0.0.9**
 
 ### Bug Fixes

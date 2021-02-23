@@ -2,13 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require("vscode");
 let refreshedVariables = () => {
-    const activeFileName = vscode.window.activeTextEditor?.document.fileName.split("\\")[vscode.window.activeTextEditor?.document.fileName.split("\\").length - 1];
-    const activeFileFolder = vscode.window.activeTextEditor?.document.fileName.split("\\")[vscode.window.activeTextEditor?.document.fileName.split("\\").length - 2];
-    const fileNameWithoutExtension = activeFileName?.split(".")[0];
-    const fileExtension = activeFileName?.split(".")[1];
-    const fileNameWithExtension = activeFileName;
-    const fileFolder = activeFileFolder;
-    const filePath = vscode.window.activeTextEditor.document.fileName;
+    let activeFileName, activeFileFolder, fileNameWithoutExtension, fileExtension, fileNameWithExtension, fileFolder, filePath;
+    if (vscode.window.activeTextEditor &&
+        vscode.window.activeTextEditor.document) {
+        activeFileName = vscode.window.activeTextEditor?.document.fileName.split("\\")[vscode.window.activeTextEditor?.document.fileName.split("\\")
+            .length - 1];
+        activeFileFolder = vscode.window.activeTextEditor?.document.fileName.split("\\")[vscode.window.activeTextEditor?.document.fileName.split("\\")
+            .length - 2];
+        fileNameWithoutExtension = activeFileName?.split(".")[0];
+        fileExtension = activeFileName?.split(".")[1];
+        fileNameWithExtension = activeFileName;
+        fileFolder = activeFileFolder;
+        filePath = vscode.window.activeTextEditor.document.fileName;
+    }
     const wsEdit = new vscode.WorkspaceEdit();
     const wsPath = vscode.workspace.workspaceFolders[0].uri.fsPath;
     const nullText = new Uint8Array([]);

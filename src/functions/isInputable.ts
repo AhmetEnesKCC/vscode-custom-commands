@@ -1,7 +1,7 @@
 import vars from "../variables";
 
 export default function isInputable(
-    line: string
+    line: string,
 ): {
     result: boolean;
     types: {
@@ -22,6 +22,7 @@ export default function isInputable(
         types.non_optional = true;
     }
     if (vars().optionalInputSign_regex.test(line)) {
+        result = true;
         types.optional = true;
     }
     return {

@@ -1,29 +1,31 @@
 import * as vscode from "vscode";
 import vars from "../variables";
 import functions from "../functions/bundle";
+import createCC from "./createCC";
 
 export default async function showFile() {
-    await functions
-        .readFile(vars().ccName + vars().ccExtension, "")
-        .then(async (res) => {
-            if (res === "") {
-                await functions.createFile(
-                    "cc",
-                    vars().ccName + vars().ccExtension
-                );
-            }
-        });
     let wsEdit = new vscode.WorkspaceEdit();
-    // let position = new vscode.Position(4, 2);
-    // position.translate(4, 2);
-    // position.line === 4;
-    // position.character === 2;
-    // wsEdit.insert(vscode.Uri.file(vars().wsPath + "/cc"), position, "POP");
-    vscode.workspace.applyEdit(wsEdit);
 
-    vscode.window.showTextDocument(
-        vscode.Uri.file(
-            vars().wsPath + "/" + vars().ccName + vars().ccExtension
-        )
-    );
+    let filePath = vars().wsPath + "/" + vars().ccName + vars().ccExtension;
+    let fileUri = vscode.Uri.file(filePath);
+    let new_promise = new Promise(async (resolve, reject) => {
+        try {
+            await vscode.workspace.fs.stat(fileUri);
+            resolve(true);
+            vscode.window.showTextDocument(fileUri);
+            vscode.workspace.applyEdit(wsEdit);
+        } catch {
+            reject("File is not exists");
+        }
+    });
+    new_promise
+        .then((res) => {
+            if (res) {
+                vscode.window.showTextDocument(fileUri);
+                vscode.workspace.applyEdit(wsEdit);
+            }
+        })
+        .catch((err) => {
+            createCC();
+        });
 }

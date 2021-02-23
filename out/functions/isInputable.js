@@ -12,6 +12,7 @@ function isInputable(line) {
         types.non_optional = true;
     }
     if (variables_1.default().optionalInputSign_regex.test(line)) {
+        result = true;
         types.optional = true;
     }
     return {

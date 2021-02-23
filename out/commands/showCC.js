@@ -2,23 +2,32 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require("vscode");
 const variables_1 = require("../variables");
-const bundle_1 = require("../functions/bundle");
+const createCC_1 = require("./createCC");
 async function showFile() {
-    await bundle_1.default
-        .readFile(variables_1.default().ccName + variables_1.default().ccExtension, "")
-        .then(async (res) => {
-        if (res === "") {
-            await bundle_1.default.createFile("cc", variables_1.default().ccName + variables_1.default().ccExtension);
+    let wsEdit = new vscode.WorkspaceEdit();
+    let filePath = variables_1.default().wsPath + "/" + variables_1.default().ccName + variables_1.default().ccExtension;
+    let fileUri = vscode.Uri.file(filePath);
+    let new_promise = new Promise(async (resolve, reject) => {
+        try {
+            await vscode.workspace.fs.stat(fileUri);
+            resolve(true);
+            vscode.window.showTextDocument(fileUri);
+            vscode.workspace.applyEdit(wsEdit);
+        }
+        catch {
+            reject("File is not exists");
         }
     });
-    let wsEdit = new vscode.WorkspaceEdit();
-    // let position = new vscode.Position(4, 2);
-    // position.translate(4, 2);
-    // position.line === 4;
-    // position.character === 2;
-    // wsEdit.insert(vscode.Uri.file(vars().wsPath + "/cc"), position, "POP");
-    vscode.workspace.applyEdit(wsEdit);
-    vscode.window.showTextDocument(vscode.Uri.file(variables_1.default().wsPath + "/" + variables_1.default().ccName + variables_1.default().ccExtension));
+    new_promise
+        .then((res) => {
+        if (res) {
+            vscode.window.showTextDocument(fileUri);
+            vscode.workspace.applyEdit(wsEdit);
+        }
+    })
+        .catch((err) => {
+        createCC_1.default();
+    });
 }
 exports.default = showFile;
 //# sourceMappingURL=showCC.js.map

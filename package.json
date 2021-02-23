@@ -2,7 +2,7 @@
     "name": "commands",
     "displayName": "Executify +",
     "description": "Execute commands at rocket speed",
-    "version": "0.0.9",
+    "version": "0.0.92",
     "engines": {
         "vscode": "^1.50.0"
     },

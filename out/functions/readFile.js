@@ -4,9 +4,9 @@ const vscode = require("vscode");
 const variables_1 = require("../variables");
 const util_1 = require("util");
 function readFile(name, ext, errFunc = (message) => {
-    return;
+    console.log(message);
 }, cb = (data) => { }) {
-    let fileUri = vscode.Uri.file(variables_1.default().wsPath + "/" + name + "/" + ext);
+    let fileUri = vscode.Uri.file(variables_1.default().wsPath + "/" + name + ext);
     let file = async () => {
         let fileData = "";
         let reader = vscode.workspace.fs.readFile(fileUri);

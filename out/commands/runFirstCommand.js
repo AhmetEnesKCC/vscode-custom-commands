@@ -50,6 +50,7 @@ async function runFirstCommand() {
         // Add inputable option
         if (bundle_1.default.isInputable(line_text).result == true) {
             let types_input = await bundle_1.default.isInputable(line_text).types;
+            console.log(types_input);
             if (types_input.non_optional === true &&
                 types_input.optional === true) {
                 await bundle_1.default
@@ -72,7 +73,7 @@ async function runFirstCommand() {
             else if (types_input.non_optional === true &&
                 types_input.optional === false) {
                 await bundle_1.default
-                    .optional_changer(line_text)
+                    .non_optional_changer(line_text)
                     .then((res) => {
                     if (res.cancelled === true) {
                         return;
